@@ -1,0 +1,83 @@
+{{!< default}}
+
+<div class="container">
+    <div class="">
+        <div class="left-section">
+            {{#post}}
+           <div class="blog-outer">
+
+							 <div class="blog-heading"><a href="{{url}}">{{title}}</a></div>
+				
+                 <div class="date">
+                <img src="{{asset 'images/calender.png'}}"> {{date}}
+            </div>
+                <div class="blog-image full-width marginT25">
+                    {{#if image}}
+                       <div class="Image"> <a href="{{url}}"><img src="{{image}}" alt="{{name}}" class="index-article-image" /></a></div>
+                    {{/if}}
+                    {{content}}
+                </div>
+
+                <div id="disqus_thread"></div>
+                <script type="text/javascript">
+                var disqus_shortname = '!!!!!!!!ENTER YOUR DISQUS SHORTNAME HERE!!!!!!';
+                (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+                </script>
+                <!--<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>-->
+    
+            </div>
+            {{/post}}
+        </div>
+        <aside>
+          <aside>
+    <div class="right-section">     
+        <div class="heading marginT10">Subscribe</div>
+        <div class="blog-outer right">
+            {{subscribe_form}}
+        </div>
+        <div class="blog-outer right">
+            <div class="blog-heading small">Follow this blog</div>
+            <div class="social-icons">
+                <a href="#"><img src="{{asset 'images/fb-icon.png'}}" /></a>
+                <a href="#"><img src="{{asset 'images/twitter-icon.png'}}" /></a>
+                <a href="#"><img src="{{asset 'images/instagram-icon.png'}}" /></a>
+            </div>
+        </div>
+    </div>
+</aside>
+        </aside>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    var xmlhttp;
+    if (window.XMLHttpRequest)
+    {// code for IE7+, Firefox, Chrome, Opera, Safari
+        xmlhttp=new XMLHttpRequest();
+    }
+    else
+    {// code for IE6, IE5
+        xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xmlhttp.onreadystatechange=function()
+    {
+        if (xmlhttp.readyState==4 && xmlhttp.status==200)
+        {
+            var wrapper = document.createElement('div');
+            wrapper.innerHTML = xmlhttp.responseText;
+            var wrapperarray = wrapper.getElementsByClassName('article-title');
+            var wrapperlinkarray = wrapper.getElementsByClassName('article-title-link');
+            for(var i = 0; i < wrapperarray.length; i++){
+                document.getElementById('aside-ul').innerHTML += '<li><a href="' + wrapperlinkarray[i] + '">' + wrapperarray[i].innerHTML + '</a></li><hr />'            
+            }
+            delete wrapper;
+        }
+    }
+    xmlhttp.open("GET","/",true);
+    xmlhttp.send();
+</script>

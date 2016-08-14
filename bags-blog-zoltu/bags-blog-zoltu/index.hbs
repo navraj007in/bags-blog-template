@@ -1,0 +1,39 @@
+{{!< default}}
+ <section class="left-section">
+<div class="heading">Latest Blogs</div>
+    {{#foreach posts}}
+	<!--blog-->
+    <div class="blog-outer">
+        <div class="blog-image">
+            {{#if image}}
+            <a href="{{url}}"><img src="{{image}}" alt="{{name}}" class="index-article-image" /></a>
+            {{/if}}
+        </div>
+		{{#if image}}
+		<div class="blog-content">
+		{{else}}
+        <div class="blog-content full-width">
+		{{/if}}
+            <div class="blog-heading"><a href="{{url}}">{{title}}</a></div>
+            <div class="date">
+                <img src="{{asset 'images/calender.png'}}"> {{date}}
+            </div>
+            <div class="article-content">
+                <p> {{excerpt words="100"}}</p>
+            </div>
+            <div class="read-more">
+                <a href="{{url}}">Read more <img src="{{asset 'images/right-arrow.png'}}" /></a>
+            </div>
+        </div>
+    </div>
+
+	<!--//blog-->
+    {{/foreach}}
+
+	
+    {{pagination}}
+	
+
+</section>
+{{> "aside"}}
+
