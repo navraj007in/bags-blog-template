@@ -1,0 +1,13 @@
+ <section class="pagination">
+  <ul>
+  
+    {{#if prev}}
+       <li> <a class="newer-posts" href="{{page_url prev}}">&larr; Newer Posts</a></li>
+    {{/if}}
+	
+    {{#if next}}
+       <li class="next"> <a class="older-posts" href="{{page_url next}}" ">Older Posts &rarr;</a></li>
+    {{/if}}
+	</ul>
+ </section>
+

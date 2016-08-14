@@ -1,0 +1,34 @@
+<aside>
+    <div class="right-section">
+        <div class="heading">Popular Blogs</div>
+        <div class="blog-outer right">
+            {{#foreach posts}}
+            <!-- right blog-->
+            <div class="popular-blog">
+                <div class="blog-image small">
+                    <a href="{{url}}"><img src="{{image}}" alt="{{name}}" class="index-article-image" /></a>
+                </div>
+                <div class="blog-content popular">
+                    <div class="blog-heading small"><a href="{{url}}">{{title}}</a></div>
+                    <div class="date">
+                        <img src="{{asset 'images/calender.png'}}"> {{date}}
+                    </div>
+                </div>
+            </div>
+            {{/foreach}}
+            <!-- //right blog-->
+        </div>
+        <div class="heading marginT10">Subscribe</div>
+        <div class="blog-outer right">
+            {{subscribe_form}}
+        </div>
+        <div class="blog-outer right">
+            <div class="blog-heading small">Follow this blog</div>
+            <div class="social-icons">
+                <a href="#"><img src="{{asset 'images/fb-icon.png'}}" /></a>
+                <a href="#"><img src="{{asset 'images/twitter-icon.png'}}" /></a>
+                <a href="#"><img src="{{asset 'images/instagram-icon.png'}}" /></a>
+            </div>
+        </div>
+    </div>
+</aside>
